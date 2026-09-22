@@ -1,9 +1,6 @@
 #include <iostream>
 #include "rate_limiter.h"
-#include <thread>
-#include <chrono>
 #include <windows.h>
-
 
 int main() {
 
@@ -17,8 +14,19 @@ int main() {
         else {
             std::cout << "Request " << i << " Blocked\n";
         }
-        Sleep(1000);
+        
     }
+
+
+    for (int i = 8; i <= 12; i++) {
+
+    if (limiter.allowRequest()) {
+        std::cout << "Request " << i << " Allowed\n";
+    }
+    else {
+        std::cout << "Request " << i << " Blocked\n";
+    }
+}
 
     return 0;
 }

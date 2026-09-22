@@ -14,7 +14,11 @@ bool RateLimiter::allowRequest() {
     ).count();
 
     if (elapsed >= 1 && tokens < capacity) {
-        tokens++;
+        tokens += static_cast<int>(elapsed);
+
+        if (tokens > capacity) {
+            tokens = capacity;
+        }
         lastRefill = currentTime;
     }
 
