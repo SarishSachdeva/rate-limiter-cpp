@@ -1,8 +1,9 @@
 #include "rate_limiter.h"
 
-RateLimiter::RateLimiter(int capacity) {
+RateLimiter::RateLimiter(int capacity, int refillRate) {
     this->capacity = capacity;
     this->tokens = capacity;
+    this->refillRate = refillRate;
     this->lastRefill = std::chrono::steady_clock::now();
 }
 
@@ -14,7 +15,7 @@ bool RateLimiter::allowRequest() {
     ).count();
 
     if (elapsed >= 1 && tokens < capacity) {
-        tokens += static_cast<int>(elapsed);
+        tokens += static_cast<int>(elapsed) * refillRate;
 
         if (tokens > capacity) {
             tokens = capacity;

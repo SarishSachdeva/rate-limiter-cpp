@@ -4,7 +4,7 @@
 
 int main() {
 
-    RateLimiter limiter(5);
+    RateLimiter limiter(5,2);
 
     for (int i = 1; i <= 7; i++) {
 
@@ -16,7 +16,7 @@ int main() {
         }
         
     }
-
+Sleep(5000);
 
     for (int i = 8; i <= 12; i++) {
 
