@@ -1,12 +1,13 @@
 #include <iostream>
 #include "rate_limiter.h"
 #include <windows.h>
-
+#include <stdexcept>
 int main() {
 
-    RateLimiter limiter(5,2);
+    try {
+        RateLimiter limiter(5, 1);
 
-    for (int i = 1; i <= 7; i++) {
+        for (int i = 1; i <= 7; i++) {
 
         if (limiter.allowRequest()) {
             std::cout << "Request " << i << " Allowed\n";
@@ -16,7 +17,7 @@ int main() {
         }
         
     }
-Sleep(5000);
+    Sleep(5000);
 
     for (int i = 8; i <= 12; i++) {
 
@@ -27,6 +28,13 @@ Sleep(5000);
         std::cout << "Request " << i << " Blocked\n";
     }
 }
+
+    }
+    catch (const std::invalid_argument& e) {
+        std::cout << "Error: " << e.what() << "\n";
+    }
+
+    
 
     return 0;
 }

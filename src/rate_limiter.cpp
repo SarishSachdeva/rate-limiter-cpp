@@ -1,10 +1,15 @@
 #include "rate_limiter.h"
+#include <stdexcept>
 
 RateLimiter::RateLimiter(int capacity, int refillRate) {
+    if(capacity <= 0 || refillRate <= 0) {
+        throw std::invalid_argument("Capacity and refill rate must be positive integers.");
+    }
     this->capacity = capacity;
     this->tokens = capacity;
     this->refillRate = refillRate;
     this->lastRefill = std::chrono::steady_clock::now();
+    
 }
 
 bool RateLimiter::allowRequest() {
