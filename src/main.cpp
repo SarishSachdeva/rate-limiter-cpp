@@ -17,17 +17,20 @@ int main() {
         }
         
     }
+    std::cout << "Remaining tokens: " << limiter.getTokens() << "\n";
     Sleep(5000);
-
+    
     for (int i = 8; i <= 12; i++) {
-
-    if (limiter.allowRequest()) {
-        std::cout << "Request " << i << " Allowed\n";
+        
+        if (limiter.allowRequest()) {
+            
+            std::cout << "Request " << i << " Allowed\n";
+        }
+        else {
+            std::cout << "Request " << i << " Blocked\n";
+        }
     }
-    else {
-        std::cout << "Request " << i << " Blocked\n";
-    }
-}
+    std::cout << "Remaining tokens: " << limiter.getTokens() << "\n";
 
     }
     catch (const std::invalid_argument& e) {

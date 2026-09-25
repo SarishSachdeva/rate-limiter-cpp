@@ -9,4 +9,5 @@ private:
 public:
     RateLimiter(int capacity, int refillRate);
     bool allowRequest();
+    int getTokens();
 };

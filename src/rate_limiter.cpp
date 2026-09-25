@@ -35,3 +35,6 @@ bool RateLimiter::allowRequest() {
 
     return false;
 }
+int RateLimiter::getTokens() {
+    return tokens;
+}
