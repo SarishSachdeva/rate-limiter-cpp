@@ -38,3 +38,6 @@ bool RateLimiter::allowRequest() {
 int RateLimiter::getTokens() {
     return tokens;
 }
+int RateLimiter::getCapacity() {
+    return capacity;
+}
