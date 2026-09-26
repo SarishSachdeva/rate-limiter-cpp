@@ -11,4 +11,5 @@ public:
     bool allowRequest();
     int getTokens();
     int getCapacity();
+    int getRefillRate();
 };

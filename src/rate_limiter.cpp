@@ -41,3 +41,6 @@ int RateLimiter::getTokens() {
 int RateLimiter::getCapacity() {
     return capacity;
 }
+int RateLimiter::getRefillRate() {
+    return refillRate;
+}

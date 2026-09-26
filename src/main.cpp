@@ -18,6 +18,7 @@ int main() {
         
     }
     std::cout << "Capacity: " << limiter.getCapacity() << "\n";
+    std::cout << "Refill Rate: " << limiter.getRefillRate() << "\n";
     std::cout << "Remaining tokens: " << limiter.getTokens() << "\n";
     Sleep(5000);
     
